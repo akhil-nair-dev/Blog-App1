@@ -40,7 +40,7 @@ def update
     @blog = Blog.find(params[:id])
     @blog.update(blog_params)
     redirect_to blogs_url
-  end
+end
 
 def like
     @blog = Put.find(params[:id])
@@ -53,15 +53,17 @@ def like
 end
 
 def follow
-    @current_user.follow(@user)
-    @follow = Follow.find_by(follower: current_user, followable: @user)
-    respond_to :js
+  @user = User.find(params[:id])
+  current_user.follow(@user)
+    # @current_user.follow(@blog.user)
+    # @follow = Follow.find_by(follower: current_user, followable: @user)
+    # respond_to :js
 end
 
 
 def unfollow
-    @current_user.stop_following(@user)
-    respond_to :js
+    @user = User.find(params[:id])
+    current_user.stop_following(@user)
 end
 
 
