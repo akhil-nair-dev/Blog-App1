@@ -1,0 +1,8 @@
+// $("#post_<%= @post.id %>_likes").html("<%= @post.likes.size %>likes");
+:plain
+	$('#like-count').html("#{@blog.get_upvotes.size}");	
+<li>
+  <div class="glyphicon glyphicon-heart"></div>
+  <div id="like-count"></div>
+  <%= @blog.get_upvotes.size %>
+</li>
